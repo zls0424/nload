@@ -81,9 +81,11 @@ void Device::print(Window& window)
     // print header
     string ip4 = m_dataFrameOld.getIpV4();
     if(!ip4.empty())
-        window.print() << "Device " << m_devReader.getDeviceName() << " [" << ip4 << "] (" << (m_deviceNumber + 1) << "/" << m_totalNumberOfDevices << "):" << endl;
+        window.print() << "Device " << m_devReader.getDeviceName() << " [" << ip4 << "] (" << (m_deviceNumber + 1) << "/" << m_totalNumberOfDevices << "):";
     else
-        window.print() << "Device " << m_devReader.getDeviceName() << " (" << (m_deviceNumber + 1) << "/" << m_totalNumberOfDevices << "):" << endl;
+        window.print() << "Device " << m_devReader.getDeviceName() << " (" << (m_deviceNumber + 1) << "/" << m_totalNumberOfDevices << "):";
+    time_t now = time(NULL);
+    window.print(window.getWidth() - 25) << ctime(&now);
     window.print() << string(window.getWidth(), '=');
     
     // if graphs should be hidden ...
